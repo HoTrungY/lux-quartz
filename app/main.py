@@ -1008,6 +1008,14 @@ def _ensure_clickable_product_detail_link(reply: str, audit: List[Dict[str, Any]
 
     product_url = _extract_first_product_url_from_audit(audit, language)
     if not product_url:
+        code_match = CODE_FINDER.search(text)
+        if code_match:
+            market = "US" if language == "en" else "VN"
+            product = get_product_by_code(_get_catalog_for_market(market), code_match.group(0))
+            if product:
+                product_url = _localize_product_url(product.get("product_url"), language=language)
+
+    if not product_url:
         return text
 
     clickable = f"[{label}]({product_url})"
