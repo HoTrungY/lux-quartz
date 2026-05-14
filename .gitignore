@@ -35,3 +35,24 @@ node_modules/
 *.db
 *.sqlite
 *.csv
+
+# Secrets — NEVER commit
+.env
+
+# Python virtual environments
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ChromaDB vector store
+data/chroma_vn/
+data/chroma_us/
+
+# Editor
+.vscode/
+.claude/
+
+# pytest
+.pytest_cache/

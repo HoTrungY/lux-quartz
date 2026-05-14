@@ -1,0 +1,239 @@
+#lux-chatbot-us-root {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 2147483640;
+  font-family: Montserrat, Roboto, Arial, sans-serif;
+  pointer-events: none;
+}
+
+#lux-chatbot-us-root.chat-open {
+  z-index: 2147483647;
+}
+
+.lux-chatbot-toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.lux-chatbot-toggle-pill {
+  border-radius: 999px;
+  background: #fff;
+  color: #0076b3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+}
+
+.lux-chatbot-toggle-label {
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .lux-chatbot-toggle:hover .lux-chatbot-toggle-pill {
+    background: #0076b3;
+    color: #fff;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .lux-chatbot-toggle:hover .lux-chatbot-toggle-label {
+    max-width: 180px;
+    opacity: 1;
+    margin-left: 0.5rem;
+  }
+}
+
+.lux-chatbot-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: 350px;
+  max-width: 90vw;
+  height: 500px;
+  max-height: 70vh;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+.lux-chatbot-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.lux-chatbot-header {
+  padding: 12px 14px;
+  background: #0076b3;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lux-chatbot-header-actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.lux-chatbot-header-actions button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.lux-chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  background: #f5f7fa;
+}
+
+.lux-chatbot-msg {
+  max-width: 92%;
+  margin-bottom: 10px;
+  padding: 9px 11px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.lux-chatbot-msg.user {
+  margin-left: auto;
+  background: #0076b3;
+  color: #fff;
+}
+
+.lux-chatbot-msg.bot {
+  margin-right: auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1d1d1d;
+}
+
+.lux-chatbot-msg.bot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.lux-chatbot-msg.bot a {
+  color: #007bff;
+  text-decoration: underline;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.lux-chatbot-msg.bot a:hover {
+  color: #005ec4;
+}
+
+.lux-chatbot-suggestions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 12px 10px;
+  background: #f5f7fa;
+}
+
+.lux-chatbot-suggestions button {
+  border: 1px solid rgba(0, 118, 179, 0.3);
+  color: #0076b3;
+  background: #fff;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.lux-chatbot-input {
+  border-top: 1px solid #e7ebef;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  background: #fff;
+}
+
+.lux-chatbot-input textarea {
+  flex: 1;
+  resize: none;
+  min-height: 40px;
+  max-height: 110px;
+  border: 1px solid #d4dde7;
+  border-radius: 10px;
+  padding: 9px 10px;
+  font-size: 13px;
+}
+
+.lux-chatbot-input button {
+  border: none;
+  background: #0076b3;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+body.lux-chatbot-open .contact-fixed,
+body.lux-chatbot-open .position-fixed.z-2 {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+@media screen and (max-width: 767.98px) {
+  #lux-chatbot-us-root {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .lux-chatbot-panel {
+    width: min(94vw, 360px);
+    max-width: 94vw;
+    height: min(80vh, 500px);
+    max-height: 80vh;
+  }
+
+  .lux-chatbot-msg {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .lux-chatbot-input textarea {
+    min-height: 36px;
+    font-size: 12px;
+  }
+}
