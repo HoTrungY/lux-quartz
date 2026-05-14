@@ -1002,7 +1002,7 @@ def _ensure_clickable_product_detail_link(reply: str, audit: List[Dict[str, Any]
         return text
 
     label = _product_detail_label(language)
-    bare_label_pattern = re.compile(rf"\[{re.escape(label)}\](?!\()")
+    bare_label_pattern = re.compile(rf"\[?{re.escape(label)}\]?(?!\()")
     if not bare_label_pattern.search(text):
         return text
 
