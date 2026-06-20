@@ -969,7 +969,11 @@ def _localize_reply_links(text: str, language: str = "vi") -> str:
             return match.group(0)
         return f"[{_product_detail_label(language)}]({local_url})"
 
-    localized = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", markdown_link_repl, text or "", flags=re.IGNORECASE)
+    # Fix malformed link patterns: remove extra "](...)" that follows a valid markdown link
+    # Pattern: ](url) immediately after a valid link closing bracket
+    cleaned = re.sub(r"\)\s*\]\s*\(\s*https?://[^)]*\)", ")", text or "", flags=re.IGNORECASE)
+    
+    localized = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", markdown_link_repl, cleaned, flags=re.IGNORECASE)
     localized = re.sub(r"(?<!\]\()https?://(?:www\.)?luxquartzvietnam\.com/[^\s)]+", bare_url_repl, localized, flags=re.IGNORECASE)
     return localized
 
